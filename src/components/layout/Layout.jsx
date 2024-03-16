@@ -1,26 +1,22 @@
 import React from "react";
-import Cart from "./Cart";
-import "./Header.css";
-function Header() {
+import Header from "./Header";
+import Products from "./Products";
+import "./Layout.css";
+const Layout = function () {
+    let total = 100;
+
     return (
-        <header>
-            <nav className="header-nav">
-                <ul className="header-ul">
-                    <li>
-                        <h2
-                            className="header-h2"
-                            style={{ fontFamily: "monospace", fontSize: "30px" }}
-                        >
-                            Redux Shopping App
-                        </h2>
-                    </li>
-                    <li>
-                        <Cart />
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <React.Fragment>
+            <div className="layout">
+                <Header />
+                <Products />
+                <div className="total-price">
+                    <h3>Total: ${total}</h3>
+                    <button className="orderBtn">Place Order</button>
+                </div>{" "}
+            </div>
+        </React.Fragment>
     );
 };
 
-export default Header;
+export default Layout;
