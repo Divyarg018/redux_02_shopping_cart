@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "../product/Product";
+import Product from "../product/Product.jsx";
 
 const DUMMY_PRODUCTS = [
     {
