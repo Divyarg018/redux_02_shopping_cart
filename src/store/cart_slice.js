@@ -33,6 +33,7 @@ const cartSlice = createSlice({
             const existingItem = draft.itemList.find(item => item.id === id);
             if (existingItem.quantity === 1) {
                 draft.itemList = draft.itemList.filter(item => item.id !== id);
+                draft.totalQuantity--;
             } else {
                 existingItem.quantity--;
                 existingItem.totalPrice -= existingItem.price;
