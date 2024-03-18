@@ -5,9 +5,11 @@ import { cartActions } from '../../store/cart_slice.js';
 
 function CartItem(props) {
     const dispatch = useDispatch();
-    const removeHandler = () => {
+
+    function removeHandler() {
         dispatch(cartActions.removeFromCart(props.id));
     };
+    
     function addHandler() {
         dispatch(
             cartActions.addToCart({
