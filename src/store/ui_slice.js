@@ -4,8 +4,8 @@ const uiSlice = createSlice({
     name: "ui",
     initialState: { notification: null },
     reducers: {
-        showNotification(draft, action) {
-            draft.notification = {
+        showNotification(state, action) {
+            state.notification = {
                 message: action.payload.message,
                 type: action.payload.type,
                 open: action.payload.open,
