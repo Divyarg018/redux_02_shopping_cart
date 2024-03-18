@@ -9,7 +9,7 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   // console.log(cartItems);
   useEffect(() => {
-    const sendRequest = async () => {
+    async function sendRequest() {
       const res = await fetch(
         'https://redux-http-14b55-default-rtdb.firebaseio.com/cartItems.json',
         {
