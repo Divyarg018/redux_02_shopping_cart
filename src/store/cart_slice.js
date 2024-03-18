@@ -7,7 +7,7 @@ const cartSlice = createSlice({
         showCart: false,
     },
     reducers: {
-        addtoCart(draft, action) {
+        addToCart(draft, action) {
             const newItem = action.payload;
             //to check whether it is available
             const existingItem = draft.itemList.find(
@@ -27,7 +27,18 @@ const cartSlice = createSlice({
                 draft.totalQuantity++;
             }
         },
-        removeFromCart(draft) { },
+        removeFromCart(draft, action) {
+            const id = action.payload;
+
+            const existingItem = draft.itemList.find(item => item.id === id);
+            if (existingItem.quantity === 1) {
+                draft.itemList = draft.itemList.filter(item => item.id !== id);
+            } else {
+                existingItem.quantity--;
+                existingItem.totalPrice -= existingItem.price;
+
+            }
+        },
         setShowCart(draft) {
             draft.showCart = !draft.showCart;
         },
