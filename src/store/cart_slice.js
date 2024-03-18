@@ -7,9 +7,15 @@ const cartSlice = createSlice({
         itemList: [],
         totalQuantity: 0,
         showCart: false,
+        changed: false,
     },
     reducers: {
+        replaceData() {
+            state.totalQuantity = action.payload.totalPrice;
+            state.itemsList = action.payload.itemsList
+        },
         addToCart(draft, action) {
+            state.changed = true;
             const newItem = action.payload;
             //to check whether it is available
             const existingItem = draft.itemList.find(
@@ -30,6 +36,7 @@ const cartSlice = createSlice({
             }
         },
         removeFromCart(draft, action) {
+            state.changed = true
             const id = action.payload;
 
             const existingItem = draft.itemList.find(item => item.id === id);

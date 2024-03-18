@@ -5,7 +5,7 @@ import Layout from './components/layout/Layout.jsx';
 import { useEffect } from "react";
 import Notification from "./components/notification/Notification.jsx";
 import { uiActions } from "./store/ui_slice.js";
-import { sendCartData } from "./store/cart_slice.js";
+import { fetchData } from "./store/cart_actions.js";
 
 let isFirstRender = true;
 
@@ -15,13 +15,20 @@ function App() {
   const cart = useSelector((state) => state.cart);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   // console.log(cartItems);
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [])
   useEffect(() => {
     if (isFirstRender) {
       isFirstRender = false;
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
+
   }, [cart, dispatch]);
   return (
     <div >
