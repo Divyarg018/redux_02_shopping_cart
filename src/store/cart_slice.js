@@ -29,7 +29,7 @@ const cartSlice = createSlice({
         },
         removeFromCart(draft) { },
         setShowCart(draft) {
-            draft.showCart = true;
+            draft.showCart = !draft.showCart;
         },
     },
 });

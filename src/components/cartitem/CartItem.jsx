@@ -1,28 +1,28 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import "../cart/Cart.css";
-import { cartActions } from "./../store/cart_slice.js";
+import { cartActions } from '../../store/cart_slice.js';
 
-function CartItem({ name, quantity, total, price, id }) {
+function CartItem(props) {
     const dispatch = useDispatch();
     const removeHandler = () => {
-        dispatch(cartActions.removeFromCart(id));
+        dispatch(cartActions.removeFromCart(props.id));
     };
     function addHandler() {
         dispatch(
             cartActions.addToCart({
-                id,
-                name,
-                price,
+                id: props.id,
+                name: props.name,
+                price: props.price,
             })
         );
     }
     return (
         <div className="cartItem">
-            <h2> {name}</h2>
-            <p>${price} /-</p>
-            <p>x{quantity}</p>
-            <article>Total ${total}</article>
+            <h2> {props.name}</h2>
+            <p>${props.price} /-</p>
+            <p>x{props.quantity}</p>
+            <article>Total ${props.totalPrice}</article>
             <button className="cart-actions" onClick={removeHandler}>
                 -
             </button>
