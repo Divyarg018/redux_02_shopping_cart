@@ -1,5 +1,5 @@
 import React from "react";
-import Cart from "./cart/Cart.jsx";
+import Cart from '../cart/Cart.jsx';
 import "./Header.css";
 function Header() {
     return (
