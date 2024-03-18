@@ -4,11 +4,11 @@ const authSlice = createSlice({
     name: "auth",
     initialState: { isLoggedIn: false },
     reducers: {
-        login(state) {
-            state.isLoggedIn = true;
+        login(draft) {
+            draft.isLoggedIn = true;
         },
-        logout(state) {
-            state.isLoggedIn = false;
+        logout(draft) {
+            draft.isLoggedIn = false;
         },
     },
 });
